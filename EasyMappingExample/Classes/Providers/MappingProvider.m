@@ -120,8 +120,8 @@
         } withReverseBlock:^id(id value) {
             return [[genders allKeysForObject:value] lastObject];
         }];
-        [mapping hasOneMapping:mapping forKey:@"relative"];
-        [mapping hasManyMapping:mapping forKey:@"children"];
+		 [mapping hasOneRecursiveMappingForKey:@"relative"];
+		 [mapping hasManyRecursiveMappingForKey:@"children"];
     }];
 }
 
@@ -209,9 +209,8 @@
                                   withBlock:^(EKObjectMapping *mapping) {
                                       [mapping mapKey:@"name" toField:@"name"];
                                       [mapping mapKey:@"message" toField:@"message"];
-                                      [mapping hasManyMapping:mapping
-                                                       forKey:@"sub_comments"
-                                                     forField:@"subComments"];
+												 [mapping hasManyRecursiveMappingForKey:@"sub_comments"
+																						 forField:@"subComments"];
                                   }];
 }
 
