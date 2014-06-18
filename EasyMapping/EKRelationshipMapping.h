@@ -16,4 +16,7 @@
 
 @property (nonatomic, strong) NSString * destinationProperty;
 
++ (instancetype)relationshipMappingWithRecursiveMapping:(EKObjectMapping*)objectMapping;
++ (instancetype)relationshipMappingWithOwnMapping:(EKObjectMapping*)objectMapping;
+
 @end

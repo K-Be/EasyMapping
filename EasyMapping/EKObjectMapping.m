@@ -162,10 +162,9 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
 -(void)hasOneMapping:(EKObjectMapping *)mapping forKey:(NSString *)key
             forField:(NSString *)field
 {
-    EKRelationshipMapping * relationship = [EKRelationshipMapping new];
+    EKRelationshipMapping * relationship = [EKRelationshipMapping relationshipMappingWithOwnMapping:mapping];
     relationship.sourceKeyPath = key;
     relationship.destinationProperty = field;
-    relationship.objectMapping = mapping;
     
     [self.hasOneMappings setObject:relationship forKey:key];
 }
@@ -177,10 +176,9 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
 
 -(void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field
 {
-    EKRelationshipMapping * relationship = [EKRelationshipMapping new];
+    EKRelationshipMapping * relationship = [EKRelationshipMapping relationshipMappingWithOwnMapping:mapping];
     relationship.sourceKeyPath = key;
     relationship.destinationProperty = field;
-    relationship.objectMapping = mapping;
 
     [self.hasManyMappings setObject:relationship forKey:key];
 }
