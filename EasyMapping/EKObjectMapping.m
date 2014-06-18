@@ -183,6 +183,23 @@ withValueBlock:(id (^)(NSString *, id))valueBlock withReverseBlock:(id (^)(id))r
     [self.hasManyMappings setObject:relationship forKey:key];
 }
 
+
+- (void)hasManyRecursiveMappingForKey:(NSString*)key forField:(NSString*)field
+{
+	EKRelationshipMapping* relationship = [EKRelationshipMapping relationshipMappingWithRecursiveMapping:self];
+	relationship.sourceKeyPath = key;
+	relationship.destinationProperty = field;
+	
+	[self.hasManyMappings setObject:relationship forKey:key];
+}
+
+
+- (void)hasManyRecursiveMappingForKey:(NSString*)key
+{
+	[self hasManyRecursiveMappingForKey:key forField:key];
+}
+
+
 - (void)addFieldMappingToDictionary:(EKFieldMapping *)fieldMapping
 {
     [self.fieldMappings setObject:fieldMapping forKey:fieldMapping.keyPath];

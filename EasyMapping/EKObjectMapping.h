@@ -212,4 +212,20 @@ withValueBlock:(EKMappingValueBlock)valueBlock withReverseBlock:(EKMappingRevers
  */
 - (void)hasManyMapping:(EKObjectMapping *)mapping forKey:(NSString *)key forField:(NSString *)field;
 
+/**
+ Map to-many recursive relationship for keyPath.
+ 
+ @param key keyPath to child object representation in JSON
+ 
+ @param field Name of the property, that will receive mapped object.
+ */
+- (void)hasManyRecursiveMappingForKey:(NSString*)key forField:(NSString*)field;
+
+/**
+ Map to-many recursive relationship for keyPath.
+ 
+ @param key keyPath to child object representation in JSON
+ */
+- (void)hasManyRecursiveMappingForKey:(NSString*)key;
+
 @end
